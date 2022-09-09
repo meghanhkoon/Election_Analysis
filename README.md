@@ -67,7 +67,8 @@ file_to_load = os.path.join("Resources", "election_results.csv")
 file_to_save = os.path.join("analysis", "election_results.txt")
 ```
 
-Within their personal csv file that is being read, they may also need to change the index numbers in each row of the data (CVS file) that represent the candidate's name and/ county. 
+Within their personal csv file that is being read, they may also need to change the index numbers in each row of the data (CVS file) that represent the candidate's name and/ county. For example, if the candidate's name is the first index (1st column on csv file), the index number would now be [0]. Instead of "candidate_name = row[2]", we would now write "candidate_name = row[1]" to retrieve the right information. 
+
 ```
 # For each row in the CSV file.
     for row in reader:
@@ -108,6 +109,6 @@ Within their personal csv file that is being read, they may also need to change 
         county_votes[county_name] += 1
 ```
 
-Lastly, the most convenient part of using this Python script for election audits is that the final results will be saved and printed to a txt file like the one below:
+Lastly, the most convenient part of using this Python script for election audits is that the election's final results will be saved and printed to a txt file like the one below:
 
 ![election_results](Resources/election_results.png)

@@ -1,15 +1,16 @@
 # Analysis of the Election Audit 
 
 ## Overview of the Election Audit 
-In this election audit, we are helping Tom, a Colorado Board of Elections employee audit a recent US congressional election in Colorado.  We were tasked with reporting the: 
 
-- total number of votes cast 
+In this election audit, we are helping Tom, a Colorado Board of Elections employee audit a recent US congressional election in Colorado.  We were tasked with reporting the total number of votes cast, total number of votes for each candidate, the percentage of votes for each candidate, and the winner of the election based on popular vote. 
+
+***Purpose:*** After completing these tasks using Python software and coding scripts, we were then asked to help the election committee to complete an audit for: 
+
 - the voter turnout for each county
 - the percentage of votes from each county out of the total count
 - the county with the highest turnout 
-- total number of votes for each candidate 
-- the percentage of votes for each candidate 
-- the winner based on popular vote 
+
+## Process for Obtaining our Results 
 
 Instead of using Excel, we are writing code in Python to automate our results for future congressional districts. The plan is to: 
 
@@ -68,7 +69,6 @@ file_to_save = os.path.join("analysis", "election_results.txt")
 ```
 
 Within their personal csv file that is being read, they may also need to change the index numbers in each row of the data (CVS file) that represent the candidate's name and/ county. For example, if the candidate's name is the first index (1st column on csv file), the index number would now be [0]. Instead of "candidate_name = row[2]", we would now write "candidate_name = row[1]" to retrieve the right information. 
-
 ```
 # For each row in the CSV file.
     for row in reader:
@@ -81,34 +81,7 @@ Within their personal csv file that is being read, they may also need to change 
 
         # 3: Extract the county name from each row.
         county_name = row[1]
-
-        # If the candidate does not match any existing candidate add it to
-        # the candidate list
-        if candidate_name not in candidate_options:
-
-            # Add the candidate name to the candidate list.
-            candidate_options.append(candidate_name)
-
-            # And begin tracking that candidate's voter count.
-            candidate_votes[candidate_name] = 0
-
-        # Add a vote to that candidate's count
-        candidate_votes[candidate_name] += 1
-
-        # 4a: Write an if statement that checks that the
-        # county does not match any existing county in the county list.
-        if county_name not in county_options:
-
-            # 4b: Add the existing county to the list of counties.
-            county_options.append(county_name)
-
-            # 4c: Begin tracking the county's vote count.
-            county_votes[county_name] = 0
-
-        # 5: Add a vote to that county's vote count.
-        county_votes[county_name] += 1
 ```
-
-Lastly, the most convenient part of using this Python script for election audits is that the election's final results will be saved and printed to a txt file like the one below:
+Lastly, the most convenient part of using this Python script for election audits is that the election's final results will be saved and printed to a txt file like the one below. If a different district's cvs election results file is uploaded as the new "file to read", we will see different names for the countys, candidates and their respective data and statistics.  
 
 ![election_results](Resources/election_results.png)
